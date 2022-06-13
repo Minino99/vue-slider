@@ -31,5 +31,20 @@ new Vue({
     data: {
         currentSlide: 0,
         slides: slides,
-    }
+    },
+    methods: {
+        nextSlide: function(direction) {
+            if (direction === "next") {
+                this.currentSlide++;
+            } else if (direction === "prev") {
+                this.currentSlide--;
+            }
+            if (this.currentSlide >= this.slides.length) {
+                this.currentSlide = 0;
+            }
+            if (this.currentSlide < 0) {
+                this.currentSlide = this.slides.length - 1;
+            }
+        },
+    },
 });
