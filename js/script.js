@@ -28,23 +28,23 @@ const slides = [
 
 new Vue({
   el: "#app",
-    data: {
-        currentSlide: 0,
-        slides: slides,
+  data: {
+    currentSlide: 0,
+    slides: slides,
+  },
+  methods: {
+    nextSlide (direction) {
+      if (direction === "next") {
+        this.currentSlide++;
+      } else if (direction === "prev") {
+        this.currentSlide--;
+      }
+      if (this.currentSlide >= this.slides.length) {
+        this.currentSlide = 0;
+      }
+      if (this.currentSlide < 0) {
+        this.currentSlide = this.slides.length - 1;
+      }
     },
-    methods: {
-        nextSlide: function(direction) {
-            if (direction === "next") {
-                this.currentSlide++;
-            } else if (direction === "prev") {
-                this.currentSlide--;
-            }
-            if (this.currentSlide >= this.slides.length) {
-                this.currentSlide = 0;
-            }
-            if (this.currentSlide < 0) {
-                this.currentSlide = this.slides.length - 1;
-            }
-        },
-    },
+  },
 });
